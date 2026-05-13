@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors */
+  --color-bg-primary: #f5f0e8; /* cream */
+  --color-bg-secondary: #ede8dc; /* slightly darker cream */
+  --color-green-primary: #2c4a35; /* dark green */
+  --color-green-secondary: #3d6b4f; /* lighter green */
+  --color-green-accent: #4e8c63; /* bright accent green */
+  --color-text-primary: #1a1a1a; /* near black for readability */
+  --color-text-muted: #6b7280; /* muted gray */
+  --color-text-light: #f5f0e8; /* cream for text on dark bg */
+  --color-border: rgba(44, 74, 53, 0.2);
+
+  /* Status */
+  --color-success: #2c4a35;
+  --color-error: #c0392b;
+
+  /* Typography */
+  --font-sans: "Georgia", serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
