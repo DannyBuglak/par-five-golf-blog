@@ -50,3 +50,22 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.6;
 }
+
+button {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
