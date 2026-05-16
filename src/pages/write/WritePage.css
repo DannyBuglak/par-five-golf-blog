@@ -1,0 +1,180 @@
+.write {
+  padding: var(--spacing-xl) 0;
+}
+
+.write__container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.write__title {
+  width: 100%;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-green-primary);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 2px solid var(--color-border);
+  font-family: var(--font-sans);
+}
+
+.write__title::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+/* Toolbar */
+.write__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.toolbar__btn {
+  background: none;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: var(--font-sans);
+}
+
+.toolbar__btn:hover {
+  background-color: var(--color-border);
+}
+
+.toolbar__btn--active {
+  background-color: var(--color-green-primary);
+  color: var(--color-text-light);
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.toolbar__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border);
+  margin: 0 var(--spacing-xs);
+}
+
+/* Editor */
+.write__editor {
+  min-height: 500px;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  cursor: text;
+}
+
+.write__editor:focus-within {
+  border-color: var(--color-green-primary);
+  outline: 2px solid var(--color-green-primary);
+  outline-offset: -1px;
+}
+
+.write__editor .ProseMirror {
+  min-height: 500px;
+  outline: none;
+  cursor: text;
+}
+
+/* TipTap content styles */
+.write__editor h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+.write__editor h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+.write__editor h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+.write__editor p {
+  margin-bottom: var(--spacing-md);
+}
+.write__editor ul {
+  list-style: disc;
+  padding-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+.write__editor ol {
+  list-style: decimal;
+  padding-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+.write__editor blockquote {
+  border-left: 4px solid var(--color-green-accent);
+  padding-left: var(--spacing-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+.write__editor strong {
+  font-weight: 700;
+}
+.write__editor em {
+  font-style: italic;
+}
+
+/* Footer */
+.write__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+}
+
+.write__draft {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.write__draft:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.write__publish {
+  background-color: var(--color-green-primary);
+  color: var(--color-text-light);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.write__publish:hover {
+  background-color: var(--color-green-secondary);
+}

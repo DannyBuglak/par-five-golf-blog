@@ -14,8 +14,10 @@ function Footer() {
           <Link to="/">Home</Link>
           <Link to="/feed">Feed</Link>
           <Link to="/my-posts">My Posts</Link>
-          <Link to="/signup">Start Blogging</Link>
-          <Link to="/login">Sign In</Link>
+          {/* Placeholder for future contact developer page */}
+          <Link to="/contact">Contact</Link>{" "}
+          {/* Placeholder for future redirect to buymeacoffee */}
+          <Link to="/">Support</Link>{" "}
         </div>
 
         <div className="footer__copy">
