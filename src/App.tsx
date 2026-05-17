@@ -8,6 +8,7 @@ import LogInPage from "./pages/auth/LogInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import WritePage from "./pages/write/WritePage";
 import FeedPage from "./pages/feed/FeedPage";
+import MyPostsPage from "./pages/myPosts/MyPostsPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/write" element={<WritePage />} />
             <Route path="/feed" element={<FeedPage />} />
+            <Route path="/my-posts" element={<MyPostsPage />} />
           </Routes>
           <Footer />
         </div>

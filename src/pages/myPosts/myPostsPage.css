@@ -1,0 +1,167 @@
+.my-posts {
+  padding: var(--spacing-xl) 0;
+}
+
+.my-posts__container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.my-posts__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.my-posts__header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.my-posts__header p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+}
+
+.my-posts__new {
+  color: var(--color-green-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.my-posts__new:hover {
+  opacity: 0.7;
+}
+
+/* Loading */
+.my-posts__loading {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Empty state */
+.my-posts__empty {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
+.my-posts__empty-btn {
+  color: var(--color-green-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.my-posts__empty-btn:hover {
+  opacity: 0.7;
+}
+
+/* Post list */
+.my-posts__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.my-posts__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) 0;
+  gap: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.my-posts__card-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1;
+}
+
+.my-posts__card-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.my-posts__card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-green-primary);
+}
+
+.my-posts__card-signature {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.my-posts__card-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Badge */
+.my-posts__badge {
+  font-size: var(--font-size-sm);
+  padding: 2px var(--spacing-sm);
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.my-posts__badge--published {
+  background-color: rgba(44, 74, 53, 0.1);
+  color: var(--color-green-primary);
+  border: 1px solid var(--color-green-primary);
+}
+
+.my-posts__badge--draft {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-text-muted);
+}
+
+/* Actions */
+.my-posts__card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.my-posts__action {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: opacity 0.2s;
+}
+
+.my-posts__action--view {
+  color: var(--color-green-secondary);
+}
+
+.my-posts__action--delete {
+  color: var(--color-error);
+}
+
+.my-posts__action:hover {
+  opacity: 0.7;
+}

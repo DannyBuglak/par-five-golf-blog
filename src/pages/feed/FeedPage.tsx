@@ -1,10 +1,10 @@
 import "./FeedPage.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useFeedPosts } from "../../features/posts/useFeedPosts";
-import FeedControls from "../../features/posts/FeedControls";
-import FeedCard from "../../features/posts/FeedCard";
-import type { SortOption } from "../../features/posts/useFeedPosts";
+import { useFeedPosts } from "../../features/feed/useFeedPosts";
+import FeedControls from "../../features/feed/FeedControls";
+import FeedCard from "../../features/feed/FeedCard";
+import type { SortOption } from "../../features/feed/useFeedPosts";
 
 function FeedPage() {
   const { allTags, loading, filterAndSort } = useFeedPosts();
