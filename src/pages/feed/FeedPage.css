@@ -28,7 +28,6 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--spacing-md) 0;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .feed__filter {
@@ -192,7 +191,6 @@
 .feed__list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
 }
 
 .feed__card {
@@ -200,15 +198,21 @@
   flex-direction: column;
   gap: var(--spacing-sm);
   padding: var(--spacing-lg) 0;
+  padding-left: var(--spacing-md);
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--color-border);
   text-decoration: none;
   color: var(--color-text-primary);
-  transition: transform 0.2s, border-color 0.2s;
+  transition: border-color 0.2s, padding-left 0.2s;
+}
+
+.feed__card:first-child {
+  border-top: 1px solid var(--color-border);
 }
 
 .feed__card:hover {
-  transform: translateY(-2px);
-  padding-left: 2px;
-  border-color: var(--color-green-secondary);
+  border-left-color: var(--color-green-primary);
+  padding-left: var(--spacing-lg);
 }
 
 .feed__card-title {
@@ -251,4 +255,32 @@
 .feed__card-author {
   font-weight: 600;
   color: var(--color-green-secondary);
+}
+
+.feed__pagination {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.feed__load-more {
+  background: none;
+  border: none;
+  color: var(--color-green-secondary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 0;
+}
+
+.feed__load-more:hover {
+  opacity: 0.7;
+}
+
+.feed__load-more:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

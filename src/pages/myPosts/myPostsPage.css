@@ -158,6 +158,10 @@
   color: var(--color-green-secondary);
 }
 
+.my-posts__action--edit {
+  color: var(--color-text-muted);
+}
+
 .my-posts__action--delete {
   color: var(--color-error);
 }

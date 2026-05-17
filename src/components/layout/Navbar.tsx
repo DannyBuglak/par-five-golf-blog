@@ -2,10 +2,25 @@ import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/auth/AuthContext";
 import { supabase } from "../../lib/supabase";
+import { useState, useEffect } from "react";
 
 function Navbar() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      if (!user) return;
+      const { data } = await supabase
+        .from("profiles")
+        .select("username")
+        .eq("id", user.id)
+        .single();
+      if (data) setUsername(data.username);
+    };
+    fetchUsername();
+  }, [user]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -24,7 +39,11 @@ function Navbar() {
             <>
               <Link to="/my-posts">My Posts</Link>
               <Link to="/write">Write</Link>
-              <Link to="/profile">Profile</Link>
+              {username && (
+                <Link to={`/profile/${username}`} className="navbar__username">
+                  Profile
+                </Link>
+              )}
               <button className="navbar__logout" onClick={handleLogout}>
                 Log Out
               </button>

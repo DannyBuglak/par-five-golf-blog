@@ -1,0 +1,129 @@
+.profile {
+  padding: var(--spacing-xl) 0;
+}
+
+.profile__container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.profile__loading,
+.profile__not-found {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--spacing-xl) 0;
+}
+
+.profile__back {
+  display: block;
+  text-align: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color 0.2s;
+}
+
+.profile__back:hover {
+  color: var(--color-green-primary);
+}
+
+/* Header */
+.profile__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.profile__avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+}
+
+.profile__avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-green-primary);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1;
+}
+
+.profile__username {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-green-primary);
+}
+
+.profile__bio {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.profile__post-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.profile__edit-btn {
+  color: var(--color-green-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.profile__edit-btn:hover {
+  opacity: 0.7;
+}
+
+.profile__divider {
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+/* Empty state */
+.profile__empty {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
+.profile__empty-btn {
+  color: var(--color-green-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.profile__empty-btn:hover {
+  opacity: 0.7;
+}
+
+/* Posts */
+.profile__posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}

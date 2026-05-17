@@ -7,7 +7,8 @@ import FeedCard from "../../features/feed/FeedCard";
 import type { SortOption } from "../../features/feed/useFeedPosts";
 
 function FeedPage() {
-  const { allTags, loading, filterAndSort } = useFeedPosts();
+  const { allTags, loading, loadingMore, hasMore, loadMore, filterAndSort } =
+    useFeedPosts();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [sort, setSort] = useState<SortOption>("date_desc");
 
@@ -45,6 +46,18 @@ function FeedPage() {
             <FeedCard key={post.id} post={post} />
           ))}
         </div>
+
+        {hasMore && !loading && (
+          <div className="feed__pagination">
+            <button
+              className="feed__load-more"
+              onClick={loadMore}
+              disabled={loadingMore}
+            >
+              {loadingMore ? "Loading..." : "Load More →"}
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );

@@ -46,6 +46,13 @@ function PostCard({ post, onDelete }: Props) {
           View
         </Link>
 
+        <Link
+          to={`/edit/${post.slug}`}
+          className="my-posts__action my-posts__action--edit"
+        >
+          Edit
+        </Link>
+
         <button
           className="my-posts__action my-posts__action--delete"
           onClick={() => onDelete(post.id)}
