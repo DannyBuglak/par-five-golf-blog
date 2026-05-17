@@ -91,7 +91,7 @@ function HomePage() {
           <Link to="/my-posts" className="nav-links__item">
             <div className="nav-links__text">
               <h3>My Posts</h3>
-              <p>View and manage all of your published blogs.</p>
+              <p>View and manage all of your blogs.</p>
             </div>
             <span className="nav-links__arrow">→</span>
           </Link>
