@@ -10,6 +10,18 @@
   gap: var(--spacing-md);
 }
 
+.write__header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.write__header p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+}
+
 .write__title {
   width: 100%;
   font-size: var(--font-size-2xl);

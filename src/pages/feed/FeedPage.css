@@ -27,10 +27,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  padding: var(--spacing-md);
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .feed__filter {
@@ -86,23 +84,75 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  position: relative;
 }
 
-.feed__sort {
+.feed__sort-dropdown {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.feed__sort-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   background-color: var(--color-bg-primary);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   font-family: var(--font-sans);
   cursor: pointer;
-  outline: none;
   transition: border-color 0.2s;
+  justify-content: space-between;
+  white-space: nowrap;
 }
 
-.feed__sort:focus {
+.feed__sort-btn:hover {
   border-color: var(--color-green-primary);
+}
+
+.feed__sort-chevron {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.feed__sort-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.feed__sort-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.feed__sort-option:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.feed__sort-option--active {
+  color: var(--color-green-primary);
+  font-weight: 600;
 }
 
 /* Loading */
@@ -157,6 +207,7 @@
 
 .feed__card:hover {
   transform: translateY(-2px);
+  padding-left: 2px;
   border-color: var(--color-green-secondary);
 }
 
