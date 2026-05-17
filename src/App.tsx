@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import LogInPage from "./pages/auth/LogInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import WritePage from "./pages/write/WritePage";
+import FeedPage from "./pages/feed/FeedPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<LogInPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/write" element={<WritePage />} />
+            <Route path="/feed" element={<FeedPage />} />
           </Routes>
           <Footer />
         </div>

@@ -150,9 +150,8 @@
 
 .write__draft {
   background: none;
-  border: 1px solid var(--color-border);
   color: var(--color-text-primary);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-sm);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
   cursor: pointer;
@@ -164,17 +163,87 @@
 }
 
 .write__publish {
-  background-color: var(--color-green-primary);
-  color: var(--color-text-light);
+  background: none;
   border: none;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-base);
+  color: var(--color-green-primary);
   font-weight: 600;
+  font-size: var(--font-size-base);
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-family: var(--font-sans);
+  transition: opacity 0.2s;
+  padding: 0;
+}
+
+.write__publish::after {
+  content: " →";
 }
 
 .write__publish:hover {
+  opacity: 0.7;
+}
+
+.write__error {
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.write__signature {
+  width: 100%;
+  font-size: var(--font-size-base);
+  font-style: italic;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  margin-top: var(--spacing-sm);
+}
+
+.write__signature::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.write__signature:focus {
+  border-bottom-color: var(--color-green-primary);
+}
+
+.write__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.write__tag {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.write__tag:hover {
+  border-color: var(--color-green-secondary);
+  color: var(--color-green-secondary);
+}
+
+.write__tag--active {
+  background-color: var(--color-green-primary);
+  border-color: var(--color-green-primary);
+  color: var(--color-text-light);
+}
+
+.write__tag--active:hover {
   background-color: var(--color-green-secondary);
+  border-color: var(--color-green-secondary);
+  color: var(--color-text-light);
 }

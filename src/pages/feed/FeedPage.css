@@ -1,0 +1,205 @@
+.feed {
+  padding: var(--spacing-xl) 0;
+}
+
+.feed__container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.feed__header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.feed__header p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+}
+
+/* Controls */
+.feed__controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.feed__filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.feed__filter-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feed__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.feed__tag {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.feed__tag:hover {
+  border-color: var(--color-green-secondary);
+  color: var(--color-green-secondary);
+}
+
+.feed__tag--active {
+  background-color: var(--color-green-primary);
+  border-color: var(--color-green-primary);
+  color: var(--color-text-light);
+}
+
+.feed__tag--active:hover {
+  background-color: var(--color-green-secondary);
+  border-color: var(--color-green-secondary);
+  color: var(--color-text-light);
+}
+
+.feed__sort-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.feed__sort {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.feed__sort:focus {
+  border-color: var(--color-green-primary);
+}
+
+/* Loading */
+.feed__loading {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Empty state */
+.feed__empty {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
+.feed__empty-btn {
+  color: var(--color-green-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  transition: opacity 0.2s;
+}
+
+.feed__empty-btn::after {
+  content: " →";
+}
+
+.feed__empty-btn:hover {
+  opacity: 0.7;
+}
+
+/* Post list */
+.feed__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.feed__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) 0;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.feed__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-green-secondary);
+}
+
+.feed__card-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-green-primary);
+}
+
+.feed__card-excerpt {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.feed__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.feed__card-tag {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-green-secondary);
+  padding: 2px var(--spacing-sm);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+}
+
+.feed__card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.feed__card-author {
+  font-weight: 600;
+  color: var(--color-green-secondary);
+}
