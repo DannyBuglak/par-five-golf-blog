@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import LogInPage from "./pages/auth/LogInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
 import WritePage from "./pages/write/WritePage";
 import FeedPage from "./pages/feed/FeedPage";
 import MyPostsPage from "./pages/myPosts/MyPostsPage";
@@ -16,6 +18,7 @@ import EditPostPage from "./pages/post/EditPostPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import EditProfilePage from "./pages/profile/EditProfilePage";
 import ContactPage from "./pages/contact/ContactPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
             <Route path="/feed" element={<FeedPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/post/:slug" element={<PostPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            
 
             <Route
               path="/write"
@@ -67,6 +73,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
         </div>

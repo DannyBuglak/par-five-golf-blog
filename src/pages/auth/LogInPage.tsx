@@ -7,6 +7,7 @@ function LogInPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -50,13 +51,23 @@ function LogInPage() {
 
           <div className="auth__field">
             <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="auth__password-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className="auth__password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
           <button
@@ -66,6 +77,10 @@ function LogInPage() {
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
+
+          <p className="auth__forgot">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </p>
 
           <p className="auth__switch">
             Don't have an account? <Link to="/signup">Sign up</Link>

@@ -3,23 +3,44 @@
 }
 
 .feed__container {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 var(--spacing-md);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
 }
 
+@media (min-width: 768px) {
+  .feed__container {
+    width: 75%;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
 .feed__header h1 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--color-green-primary);
   margin-bottom: var(--spacing-xs);
 }
 
+@media (min-width: 768px) {
+  .feed__header h1 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
 .feed__header p {
   color: var(--color-text-muted);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
+}
+
+@media (min-width: 768px) {
+  .feed__header p {
+    font-size: var(--font-size-base);
+  }
 }
 
 /* Controls */
@@ -37,11 +58,17 @@
 }
 
 .feed__filter-label {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  .feed__filter-label {
+    font-size: var(--font-size-sm);
+  }
 }
 
 .feed__tags {
@@ -62,7 +89,7 @@
   transition: all 0.2s;
 }
 
-.feed__tag:hover {
+.feed__tag:active {
   border-color: var(--color-green-secondary);
   color: var(--color-green-secondary);
 }
@@ -73,10 +100,23 @@
   color: var(--color-text-light);
 }
 
-.feed__tag--active:hover {
+.feed__tag--active:active {
   background-color: var(--color-green-secondary);
   border-color: var(--color-green-secondary);
   color: var(--color-text-light);
+}
+
+@media (hover: hover) {
+  .feed__tag:hover {
+    border-color: var(--color-green-secondary);
+    color: var(--color-green-secondary);
+  }
+
+  .feed__tag--active:hover {
+    background-color: var(--color-green-secondary);
+    border-color: var(--color-green-secondary);
+    color: var(--color-text-light);
+  }
 }
 
 .feed__sort-wrapper {
@@ -109,8 +149,14 @@
   white-space: nowrap;
 }
 
-.feed__sort-btn:hover {
+.feed__sort-btn:active {
   border-color: var(--color-green-primary);
+}
+
+@media (hover: hover) {
+  .feed__sort-btn:hover {
+    border-color: var(--color-green-primary);
+  }
 }
 
 .feed__sort-chevron {
@@ -145,8 +191,14 @@
   transition: background-color 0.2s;
 }
 
-.feed__sort-option:hover {
+.feed__sort-option:active {
   background-color: var(--color-bg-secondary);
+}
+
+@media (hover: hover) {
+  .feed__sort-option:hover {
+    background-color: var(--color-bg-secondary);
+  }
 }
 
 .feed__sort-option--active {
@@ -158,17 +210,29 @@
 .feed__loading {
   color: var(--color-text-muted);
   text-align: center;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0;
+}
+
+@media (min-width: 768px) {
+  .feed__loading {
+    padding: var(--spacing-xl) 0;
+  }
 }
 
 /* Empty state */
 .feed__empty {
   text-align: center;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
   color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .feed__empty {
+    padding: var(--spacing-xl) 0;
+  }
 }
 
 .feed__empty-btn {
@@ -177,14 +241,23 @@
   font-weight: 600;
   font-size: var(--font-size-base);
   transition: opacity 0.2s;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  display: inline-block;
 }
 
 .feed__empty-btn::after {
   content: " →";
 }
 
-.feed__empty-btn:hover {
+.feed__empty-btn:active {
   opacity: 0.7;
+}
+
+@media (hover: hover) {
+  .feed__empty-btn:hover {
+    opacity: 0.7;
+  }
 }
 
 /* Post list */
@@ -197,7 +270,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
   padding-left: var(--spacing-md);
   border-left: 3px solid transparent;
   border-bottom: 1px solid var(--color-border);
@@ -206,25 +279,50 @@
   transition: border-color 0.2s, padding-left 0.2s;
 }
 
+@media (min-width: 768px) {
+  .feed__card {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
 .feed__card:first-child {
   border-top: 1px solid var(--color-border);
 }
 
-.feed__card:hover {
+.feed__card:active {
   border-left-color: var(--color-green-primary);
   padding-left: var(--spacing-lg);
 }
 
+@media (hover: hover) {
+  .feed__card:hover {
+    border-left-color: var(--color-green-primary);
+    padding-left: var(--spacing-lg);
+  }
+}
+
 .feed__card-title {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-green-primary);
 }
 
+@media (min-width: 768px) {
+  .feed__card-title {
+    font-size: var(--font-size-xl);
+  }
+}
+
 .feed__card-excerpt {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .feed__card-excerpt {
+    font-size: var(--font-size-base);
+  }
 }
 
 .feed__card-tags {
@@ -239,7 +337,13 @@
   color: var(--color-green-secondary);
   padding: 2px var(--spacing-sm);
   border-radius: 999px;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
+}
+
+@media (min-width: 768px) {
+  .feed__card-tag {
+    font-size: var(--font-size-sm);
+  }
 }
 
 .feed__card-meta {
@@ -248,8 +352,14 @@
   align-items: center;
   padding-top: var(--spacing-sm);
   border-top: 1px solid var(--color-border);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .feed__card-meta {
+    font-size: var(--font-size-sm);
+  }
 }
 
 .feed__card-author {
@@ -264,6 +374,12 @@
   border-top: 1px solid var(--color-border);
 }
 
+@media (min-width: 768px) {
+  .feed__pagination {
+    padding: var(--spacing-xl) 0;
+  }
+}
+
 .feed__load-more {
   background: none;
   border: none;
@@ -276,11 +392,17 @@
   padding: 0;
 }
 
-.feed__load-more:hover {
+.feed__load-more:active {
   opacity: 0.7;
 }
 
 .feed__load-more:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+@media (hover: hover) {
+  .feed__load-more:hover {
+    opacity: 0.7;
+  }
 }

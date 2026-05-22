@@ -1,6 +1,8 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
+const BUYMEACOFFEE_URL = 'https://buymeacoffee.com/dannybuglak';
+
 function Footer() {
   return (
     <footer className="footer">
@@ -17,7 +19,9 @@ function Footer() {
           {/* Placeholder for future contact developer page */}
           <Link to="/contact">Contact</Link>{" "}
           {/* Placeholder for future redirect to buymeacoffee */}
-          <Link to="/">Support</Link>{" "}
+          <Link to={BUYMEACOFFEE_URL} target="_blank" rel="noopener noreferrer">
+            Support This Project
+          </Link>
         </div>
 
         <div className="footer__copy">

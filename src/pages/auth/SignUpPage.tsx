@@ -44,7 +44,7 @@ function SignUpPage() {
     <main className="auth">
       <div className="auth__card">
         <h1 className="auth__title">Create an Account</h1>
-        <p className="auth__subtitle">Join Par Five and start writing</p>
+        <p className="auth__subtitle">Join Par Five Golf Blog and start writing</p>
 
         {error && <p className="auth__error">{error}</p>}
 

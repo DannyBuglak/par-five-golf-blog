@@ -39,8 +39,23 @@ function EditProfilePage() {
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Validate file size (5MB max)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setError("Image must be smaller than 5MB");
+      return;
+    }
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      setError("Please select a valid image file");
+      return;
+    }
+
     setAvatarFile(file);
     setAvatarPreview(URL.createObjectURL(file));
+    setError(null);
   };
 
   const handleSave = async () => {
@@ -55,42 +70,67 @@ function EditProfilePage() {
     let newAvatarUrl = avatarUrl;
 
     if (avatarFile) {
-      const fileExt = avatarFile.name.split(".").pop();
-      const filePath = `${user?.id}/avatar.${fileExt}`;
+      try {
+        // Get file extension, fallback to 'jpg' if missing
+        const fileExt = avatarFile.name.split(".").pop()?.toLowerCase() || "jpg";
+        const timestamp = Date.now();
+        const filePath = `${user?.id}/avatar-${timestamp}.${fileExt}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from("avatars")
-        .upload(filePath, avatarFile, { upsert: true });
+        console.log("Uploading file:", {
+          path: filePath,
+          size: avatarFile.size,
+          type: avatarFile.type,
+        });
 
-      if (uploadError) {
-        setError(uploadError.message);
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from("avatars")
+          .upload(filePath, avatarFile, { upsert: true });
+
+        if (uploadError) {
+          console.error("Upload error:", uploadError);
+          setError(`Upload failed: ${uploadError.message}`);
+          setSaving(false);
+          return;
+        }
+
+        console.log("Upload successful:", uploadData);
+
+        const { data: urlData } = supabase.storage
+          .from("avatars")
+          .getPublicUrl(filePath);
+
+        newAvatarUrl = urlData.publicUrl;
+      } catch (err) {
+        console.error("Upload exception:", err);
+        setError("Failed to upload image. Please try again.");
+        setSaving(false);
+        return;
+      }
+    }
+
+    try {
+      const { error: updateError } = await supabase
+        .from("profiles")
+        .update({
+          username: username.trim(),
+          bio: bio.trim(),
+          avatar_url: newAvatarUrl,
+        })
+        .eq("id", user?.id);
+
+      if (updateError) {
+        console.error("Update error:", updateError);
+        setError(updateError.message);
         setSaving(false);
         return;
       }
 
-      const { data: urlData } = supabase.storage
-        .from("avatars")
-        .getPublicUrl(filePath);
-
-      newAvatarUrl = urlData.publicUrl;
-    }
-
-    const { error: updateError } = await supabase
-      .from("profiles")
-      .update({
-        username: username.trim(),
-        bio: bio.trim(),
-        avatar_url: newAvatarUrl,
-      })
-      .eq("id", user?.id);
-
-    if (updateError) {
-      setError(updateError.message);
+      navigate(`/profile/${username.trim()}`);
+    } catch (err) {
+      console.error("Update exception:", err);
+      setError("Failed to save profile. Please try again.");
       setSaving(false);
-      return;
     }
-
-    navigate(`/profile/${username.trim()}`);
   };
 
   if (loading) return null;

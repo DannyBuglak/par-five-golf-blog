@@ -5,8 +5,16 @@ import { useFeedPosts } from "../../features/feed/useFeedPosts";
 import FeedControls from "../../features/feed/FeedControls";
 import FeedCard from "../../features/feed/FeedCard";
 import type { SortOption } from "../../features/feed/useFeedPosts";
+import { useMetaTags } from "../../hooks/useMetaTags";
 
 function FeedPage() {
+  useMetaTags({
+    title: "Latest Golf Blog Posts",
+    description: "Browse the latest golf blog posts and stories from our community of passionate golfers.",
+    url: "/feed",
+    type: "website",
+  });
+  
   const { allTags, loading, loadingMore, hasMore, loadMore, filterAndSort } =
     useFeedPosts();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);

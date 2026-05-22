@@ -1,8 +1,16 @@
 import "./ContactPage.css";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useMetaTags } from "../../hooks/useMetaTags";
 
 function ContactPage() {
+  useMetaTags({
+    title: "Contact Par Five Golf Blog",
+    description: "Have a question or suggestion? Get in touch with the Par Five Golf Blog team.",
+    url: "/contact",
+    type: "website",
+  });
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -34,6 +42,7 @@ function ContactPage() {
       setSubmitted(true);
     } catch (err) {
       setError("Something went wrong. Please try again.");
+      console.log("EmailJS error:", err);
     }
 
     setSending(false);

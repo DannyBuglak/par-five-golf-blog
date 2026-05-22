@@ -7,6 +7,7 @@ import { supabase } from "../../lib/supabase";
 import { useAuth } from "../../features/auth/AuthContext";
 import EditorToolbar from "../../features/editor/EditorToolbar";
 import TagSelector from "../../features/editor/TagSelector";
+import ConfirmModal from "../../components/ui/ConfirmModal";
 
 interface Tag {
   id: string;
@@ -25,6 +26,7 @@ function EditPostPage() {
   const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -61,7 +63,7 @@ function EditPostPage() {
     };
 
     if (user && editor) fetchPost();
-  }, [slug, user, editor]);
+  }, [slug, user, editor, navigate]);
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -113,7 +115,22 @@ function EditPostPage() {
     navigate(`/post/${slug}`);
   };
 
-  const handleDiscard = () => navigate(`/post/${slug}`);
+  const handleDiscardClick = () => {
+    setShowDiscardConfirm(true);
+  };
+
+  const handleConfirmDiscard = () => {
+    setShowDiscardConfirm(false);
+    navigate(`/post/${slug}`);
+  };
+
+  const handleCancelDiscard = () => {
+    setShowDiscardConfirm(false);
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   if (loading) return null;
 
@@ -154,22 +171,35 @@ function EditPostPage() {
         />
 
         <div className="write__footer">
-          <button
-            className="write__draft"
-            onClick={handleDiscard}
-            disabled={saving}
-          >
-            Discard
-          </button>
-          <button
-            className="write__publish"
-            onClick={() => handleSave()}
-            disabled={saving}
-          >
-            {saving ? "Publishing..." : "Publish"}
-          </button>
-        </div>
+  <button className="write__back" onClick={handleBack} aria-label="Go back">
+    ← Back
+  </button>
+  <div>
+    <button
+      className="write__draft"
+      onClick={handleDiscardClick}
+      disabled={saving}
+    >
+      Discard
+    </button>
+    <button
+      className="write__publish"
+      onClick={() => handleSave()}
+      disabled={saving}
+    >
+      {saving ? "Publishing..." : "Publish"}
+    </button>
+  </div>
+</div>
       </div>
+
+      {showDiscardConfirm && (
+        <ConfirmModal
+          message="Discard changes? Your edits will not be saved."
+          onConfirm={handleConfirmDiscard}
+          onCancel={handleCancelDiscard}
+        />
+      )}
     </main>
   );
 }

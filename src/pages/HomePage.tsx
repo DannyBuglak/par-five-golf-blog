@@ -1,16 +1,29 @@
 import "./HomePage.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useMetaTags } from "../hooks/useMetaTags";
 
-const photoModules = import.meta.glob(
+ 
+interface PhotoModule {
+  default: string;
+}
+ 
+const photoModules = import.meta.glob<PhotoModule>(
   "../assets/golfCourses/*.{png,jpg,jpeg,webp}",
   { eager: true },
 );
-const photos = Object.values(photoModules).map((mod: any) => mod.default);
+const photos = Object.values(photoModules).map((mod) => mod.default);
 
 const CYCLE_INTERVAL = 6000;
 
 function HomePage() {
+  useMetaTags({
+    title: "Golf Stories Worth Reading",
+    description: "Discover and share golf stories from our community. Written by golfers for golfers.",
+    url: "/",
+    type: "website",
+  });
+  
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
 
@@ -24,10 +37,12 @@ function HomePage() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      goTo(current === photos.length - 1 ? 0 : current + 1);
+      setCurrent((prevCurrent) =>
+        prevCurrent === photos.length - 1 ? 0 : prevCurrent + 1
+      );
     }, CYCLE_INTERVAL);
     return () => clearInterval(timer);
-  }, [current]);
+  }, []);
 
   return (
     // TODO: Move these all into features

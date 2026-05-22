@@ -5,6 +5,7 @@ import { supabase } from "../../lib/supabase";
 import { useAuth } from "../../features/auth/AuthContext";
 import Reactions from "../../features/posts/Reactions";
 import Comments from "../../features/posts/Comments";
+import { useMetaTags } from "../../hooks/useMetaTags";
 
 interface Post {
   id: string;
@@ -46,6 +47,26 @@ function PostPage() {
 
     fetchPost();
   }, [slug]);
+
+  const getExcerpt = (html: string) => {
+    const text = html.replace(/<[^>]*>/g, "").trim();
+    return text.length > 160 ? text.substring(0, 160) + "..." : text;
+  };
+
+  useMetaTags(
+    post ? {
+      title: post.title,
+      description: getExcerpt(post.content),
+      url: `/post/${slug}`,
+      type: "article",
+      author: post.signature || post["profiles!posts_author_id_fkey"]?.[0]?.username,
+    } : {
+      title: "Loading...",
+      description: "Loading post...",
+      url: `/post/${slug}`,
+      type: "article",
+    }
+  );
 
   const formatDate = (date: string) =>
     new Date(date).toLocaleDateString("en-US", {

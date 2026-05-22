@@ -61,6 +61,21 @@
   transition: opacity 0.2s;
 }
 
-.modal__confirm:hover {
-  opacity: 0.85;
+.modal__confirm--danger {
+  background-color: var(--color-red, #dc2626);
+  color: white;
 }
+ 
+.modal__confirm--danger:hover {
+  background-color: var(--color-red-dark, #b91c1c);
+}
+ 
+.modal__confirm--primary {
+  background-color: var(--color-green-primary);
+  color: white;
+}
+ 
+.modal__confirm--primary:hover {
+  background-color: var(--color-green-secondary);
+}
+

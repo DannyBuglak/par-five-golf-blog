@@ -8,6 +8,7 @@ function Navbar() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [username, setUsername] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -24,23 +25,47 @@ function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setMenuOpen(false);
     navigate("/");
   };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav className="navbar">
       <div className="navbar__inner">
-        <Link to="/" className="navbar__logo">
+        <Link to="/" className="navbar__logo" onClick={closeMenu}>
           Par Five Golf Blog
         </Link>
-        <div className="navbar__links">
-          <Link to="/feed">Feed</Link>
+
+        <button
+          className={`navbar__hamburger ${menuOpen ? "navbar__hamburger--open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className="navbar__hamburger-line"></span>
+          <span className="navbar__hamburger-line"></span>
+          <span className="navbar__hamburger-line"></span>
+        </button>
+
+        <div className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
+          <Link to="/feed" onClick={closeMenu}>
+            Feed
+          </Link>
           {user ? (
             <>
-              <Link to="/my-posts">My Posts</Link>
-              <Link to="/write">Write</Link>
+              <Link to="/my-posts" onClick={closeMenu}>
+                My Posts
+              </Link>
+              <Link to="/write" onClick={closeMenu}>
+                Write
+              </Link>
               {username && (
-                <Link to={`/profile/${username}`} className="navbar__username">
+                <Link
+                  to={`/profile/${username}`}
+
+                  onClick={closeMenu}
+                >
                   Profile
                 </Link>
               )}
@@ -50,8 +75,10 @@ function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup" className="navbar__cta">
+              <Link to="/login" onClick={closeMenu}>
+                Login
+              </Link>
+              <Link to="/signup" onClick={closeMenu}>
                 Start Writing
               </Link>
             </>
