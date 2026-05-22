@@ -10,6 +10,7 @@ import LogInPage from "./pages/auth/LogInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
+import ConfirmEmailPage from "./pages/auth/ConfirmEmailPage";
 import WritePage from "./pages/write/WritePage";
 import FeedPage from "./pages/feed/FeedPage";
 import MyPostsPage from "./pages/myPosts/MyPostsPage";
@@ -35,7 +36,7 @@ function App() {
             <Route path="/post/:slug" element={<PostPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
-            
+            <Route path="/confirm-email" element={<ConfirmEmailPage />} />
 
             <Route
               path="/write"
